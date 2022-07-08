@@ -23,10 +23,11 @@ public class Kata7 {
         AtomicInteger ind = new AtomicInteger();
 
         return movieLists.stream()
-                .flatMap(movieList -> movieList.getVideos().stream())
+                .map(movie -> movie.getVideos())
+                .flatMap(movieList -> movieList.stream())
                 .map(mv ->
                         ImmutableMap.of("id", mv.getId(), "title", mv.getTitle(), "boxart", mv.getBoxarts().stream()
-                                .min(Comparator.comparing(boxArt -> boxArt.getUrl().length())).orElseThrow().getUrl()
+                                .min(Comparator.comparing(boxArt -> boxArt.getWidth())).orElseThrow().getUrl()
                 )).collect(Collectors.toList());
 
     }

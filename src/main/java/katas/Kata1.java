@@ -15,11 +15,12 @@ import java.util.stream.Collectors;
     Output: List of ImmutableMap.of("id", "5", "title", "Bad Boys")
 */
 public class Kata1 {
-    public static List<ImmutableMap<Integer,String>> execute() {
+    public static List<Map> execute() {
         List<Movie> movies = DataUtil.getMovies();
 
+//        "id", 5, "title", "Bad Boys")
        return movies.stream().
-                map(movie -> ImmutableMap.of(movie.getId(),movie.getTitle()))
+                map(movie -> ImmutableMap.of("id", movie.getId(), "title",movie.getTitle()))
                .collect(Collectors.toList());
     }
 
