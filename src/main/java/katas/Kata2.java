@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class Kata2 {
     public static List<Integer> execute() {
         List<Movie> movies = DataUtil.getMovies();
-        
+
         return movies.stream()
                 .filter(x -> x.getRating() == 5.0)
                 .map(item -> item.getId())
